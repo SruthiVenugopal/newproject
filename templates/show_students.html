@@ -1,0 +1,39 @@
+{% extends 'dashbord.html' %}
+{% block content %}
+<div class="container-fluid"
+ style="margin-top:10%;">
+ <div class="container bg-light">
+    <h1>SHOW STUDENTS DETAILS</h1>
+    <table class="table table-stribed">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Address</th>
+                <th>Age</th>
+                <th>Joining Date</th>
+                <th>Course</th>
+                <th>Course Fee</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in std %}
+            <tr>
+                <td>{{ i.std_name }}</td>
+                <td>{{ i.std_address }}</td>
+                <td>{{ i.std_age }}</td>
+                <td>{{ i.Join_date }}</td>
+                <td>{{ i.course.course_name }}</td>
+                <td>{{ i.course.fee }}</td>
+                <td> <a href="{% url 'editpage' i.id  %}"><span class="fas fa-edit text-dark">Edit </span></a>
+                    <a href="/delete_students/{{ i.id }}"><span class="fa fa-trash text-dark">Delete</span> </a>
+       </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+</div>
+{% endblock %}

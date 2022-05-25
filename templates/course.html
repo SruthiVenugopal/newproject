@@ -1,0 +1,22 @@
+{% extends 'dashbord.html' %}
+{% block content %}
+<div class="container-fluid"
+ style="margin-top:10%;">
+ <div class="container bg-light">
+    
+    <form action="{% url 'add_course' %}" method="post" class="form pt-5 pb-5" style="width: 50%; margin-left:25%">
+        {% csrf_token %}
+ 
+        <!-- <input type="number" name="csno" class="form-control" placeholder="Course Number"><br> -->
+        <input type="text" name="course" class="form-control" placeholder="Enter Course"><br>
+        <input type="number" name="cfee" class="form-control" placeholder="Enter Course Fee"><br>
+        
+
+        <button type="submit" class="btn btn-outline-info" style="margin-left: 40%;">Submit</button>
+        
+    </form>
+
+</div>
+
+</div>
+{% endblock %}

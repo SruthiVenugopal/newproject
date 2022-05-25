@@ -1,0 +1,28 @@
+{% extends 'dashbord.html' %}
+{% block content %}
+<div class="container-fluid"
+ style="margin-top:10%;">
+ <div class="container bg-light">
+    
+    <form action="{% url 'add_student' %}" method="post" class="form pt-5 pb-5" style="width: 50%; margin-left:25%">
+        {% csrf_token %}
+ 
+        <!-- <input type="number" name="adno" class="form-control" placeholder="Admission Number"><br> -->
+        <input type="text" name="sname"class="form-control" placeholder="Student Name"><br>
+        <input type="text" name="address" class="form-control" placeholder="Address"><br>
+        <input type="number" name="age" class="form-control" placeholder="Age"><br>
+        <input type="date" name="jdate" class="form-control" placeholder="Joining Date"><br>
+        <select class="form-control" name="sel">
+            {% for course in courses %}
+            <option value="{{ course.id }}">{{ course.course_name}}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit" class="btn btn-outline-info" style="margin-left: 40%;">Submit</button>
+        
+    </form>
+    
+</div>
+
+</div>
+{% endblock %}

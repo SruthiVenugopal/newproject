@@ -1,0 +1,55 @@
+{% extends 'dashbord.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid"
+ style="margin-top:10%;">
+ <div class="container bg-light">
+    <h1>SHOW TUTORS DETAILS</h1>
+    <table class="table table-stribed">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>Gender</th>
+                <th>Mobile No</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Profile photo</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in user %}
+            <tr>
+                <td>{{ u.user.id }}</td>
+                <td>{{ u.user.first_name }}</td>
+                <td>{{ u.user.last_name }}</td>
+                <td>{{ u.user_address }}</td>
+                <td>{{ u.user_gender }}</td>
+                <td>{{ u.user_mobile }}</td>
+                <td>{{ u.user.email }}</td>
+                <td>{{ u.user.username }}</td>
+                {% if u.user_photo == '/static/image/default.png' %}
+                                <td>
+                                    <img src="{% static 'image/default.png' %}" class="w-25">
+                                </td>
+                                {% else %}
+                                <td>
+                                    <img src="{{ u.user_photo.url }}" class="w-25">
+                                </td>
+                                {% endif %}
+                
+                <td> 
+                    <a href="/delete_tutors/{{ u.user.id }}"><span class="fa fa-trash text-dark">Remove</span> </a>
+       </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+</div>
+{% endblock %}

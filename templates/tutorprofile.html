@@ -1,0 +1,98 @@
+<html lang="en">
+{% load static %}
+    <head>
+        <title>
+            Website
+        </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> 
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+        <body style=" background-color:rgb(85, 167, 243);">
+        
+
+            <nav class="navbar navbar-expand-md bg-secondary">
+                <!-- Brand -->
+                <a class="navbar-brand text-light" href="#">WELCOME</a>
+              
+                <!-- Toggler/collapsibe Button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <!-- Navbar links -->
+                
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{% url 'tutorprofile' %}">PROFILE</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-light" href="{% url 'edittutor' %}">EDIT PROFILE</a>
+                      </li>
+                    
+                    <li class="nav-item">
+                      <a class="nav-link text-light" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+              <div class="container-fluid"
+              style="margin-top:10%;">
+              <div class="container bg-light">
+                 {% for  msg in messages %}
+                 <h1 style="color: blueviolet; text-align:center;">{{ msg }}</h1>
+                 {% endfor %}
+                 <h1 style="text-align:center" >MY PROFILE</h1>
+                 
+             </div>
+             
+             </div>
+             {% for u in user %}
+             <div class="card-body">
+                 <div class="row">
+                     <div class="col-3"></div>
+                     <div class="col-3">
+                        <p class="card-text ml-5"><b>NAME</b></p>
+                        <p class="card-text ml-5"><b>USERNAME</b></p>
+                        <p class="card-text ml-5"><b>EMAIL</b></p>
+                        <p class="card-text ml-5"><b>ADDRESS</b></p>
+                        <p class="card-text ml-5"><b>MOBILE</b></p>
+                        <p class="card-text ml-5"><b>GENDER</b></p>
+                        <p class="card-text ml-5"><b>PROFILE PHOTO</b></p>
+                     </div>
+                     <div class="col-3">
+                        <p class="card-text ml-5">{{u.user.first_name}} {{u.user.last_name}}</p>
+                        <p class="card-text ml-5">{{u.user.username}}</p>
+                        <p class="card-text ml-5">{{u.user.email}}</p>
+                        <p class="card-text ml-5">{{u.user_address}}</p>
+                        <p class="card-text ml-5">{{u.user_mobile}}</p>
+                        <p class="card-text ml-5">{{u.user_gender}}</p>
+                        {% if u.user_photo == '/static/image/default.png' %}
+                                <td>
+                                    <img src="{% static 'image/default.png' %}" class="w-25">
+                                </td>
+                                {% else %}
+                                <td>
+                                    <img src="{{ u.user_photo.url }}" class="w-25">
+                                </td>
+                                {% endif %}
+                        
+                     </div>
+                     <div class="col-3"></div>
+                 </div>
+                 {% endfor %}
+             </div>
+              
+            </body>
+        </html>

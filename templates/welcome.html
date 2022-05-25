@@ -1,0 +1,15 @@
+{% extends 'dashbord.html' %}
+{% block content %}
+<div class="container-fluid"
+ style="margin-top:10%;">
+ <div class="container bg-light">
+    {% for  msg in messages %}
+    <h1 style="color: blueviolet; text-align:center;">{{ msg }}</h1>
+    {% endfor %}
+    
+    <img src="/static/image/default.png"
+        class="w-25" style="margin-left:400px">
+</div>
+
+</div>
+{% endblock %}

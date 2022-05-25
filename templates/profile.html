@@ -1,0 +1,57 @@
+{% extends 'dashbord.html' %}
+{% block content %}
+<div class='container'>
+	<div class='row'>
+		<div class='col-md-2'></div>
+		<div class='col-md-8 mt-5'>
+			<div class="card p-3">
+				<form method='post' class='post-form' action="/edit_student_details/{{ students.pk }}">
+					{% csrf_token %}
+					<div class="row">
+						<div class="col-md-4"></div>
+						<div class="col-md-4">
+							<h3 class="text-dark">MY PROFILE</h3>
+						</div>
+						<div class="col-md-4"></div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<label style="margin-left: 13px;">NAME</label>
+							<input type="text" name="std_name" value="{{ students.std_name }}" class='form-control'>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<label style="margin-left: 13px;">ADDRESS</label>
+							<input type="text" name="std_address" value="{{ students.std_address}}" class='form-control'>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<label style="margin-left: 13px;">AGE</label>
+							<input type="number" name="std_age" value="{{ students.std_age }}" class='form-control'>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<label style="margin-left: 13px;">COURSE</label>
+							<input type="text" name="course" value="{{ students.course.course_name }}" class='form-control'>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-4"></div>
+						<div class="col-md-4 mt-3 d-flex">
+							<button type='submit' class='btn btn-outline-primary rounded-pill'>
+							SAVE</button>
+							
+						</div>
+						<div class="col-md-4"></div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class='col-md-2'></div>
+	</div>
+</div>
+{% endblock %}
